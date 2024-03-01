@@ -10,7 +10,7 @@ class Base
 
     public function __construct()
     {
-        $this ->bdd = new PDO('mysql:host=localhost:3306;dbname=lprs_app;charset=utf8', 'lrch', 'azerty123');
+        $this ->bdd = new PDO('mysql:host=localhost:3306;dbname=lrch_app;charset=utf8', 'lrch', 'azerty123');
     }
 
     public function getBdd()
