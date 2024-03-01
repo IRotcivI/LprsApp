@@ -1,19 +1,16 @@
 <!doctype html>
-<html lang="fr" xmlns="">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LRCH</title>
+    <title>Lprs</title>
 </head>
-
 <body>
-
-<!--Titre-->
 <l1>
-    LRCH Stock
-    <br>
+    Gestion du stock LPRS
+<br>
     <br>
 </l1>
 
@@ -22,10 +19,10 @@
     <table>
         <tr>
             <td>
-                Email :
+                Identifiant :
             </td>
             <td>
-                <input type="email" name="email" required>
+                <input type="text" name="email" required>
             </td>
         </tr>
 
@@ -47,5 +44,4 @@
 </form>
 
 </body>
-
 </html>
