@@ -1,7 +1,7 @@
 <?php
 
 
-class Lprs
+class Lrch
 {
     private $nom;
     private $prenom;
@@ -120,12 +120,23 @@ class Lprs
         $res = $req -> fetch();
         if (is_array($res))
         {
-            $this -> setNom($res["nom"]);
-            $this -> setPrenom($res["prenom"]);
-            $this -> setFonction($res["fonction"]);
-            session_start();
-            $_SESSION["user"] = $this;
-            header("Location: ../../vue/acceuil.php");
+            $page = $bdd ->getBdd() -> prepare("SELECT fonctionClasse FROM profil WHERE email = :email AND motDePasse = :mdp");
+            $page -> execute(array(
+                'email'=>$this->getEmail(),
+                'mdp'=>$this->getMdp(),
+            ));
+
+            //Menu pour les professeurs
+            $red = $page -> fetch();
+            if ($red ['fonctionClasse'] == "Eleve")
+            {
+                $this -> setNom($res["nom"]);
+                $this -> setPrenom($res["prenom"]);
+                $this -> setFonction($res["fonctionClasse"]);
+                session_start();
+                $_SESSION["user"] = $this;
+                header("Location: ../../vue/professeur.php");
+            }
         }
         else
         {

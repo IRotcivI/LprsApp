@@ -1,9 +1,9 @@
 <?php
 include '../database/Base.php';
-include '../model/Lprs.php';
+include '../model/Lrch.php';
 
 //CODE
-$cli = new Lprs([
+$cli = new Lrch([
     'email' => $_POST['email'],
     'mdp' => $_POST['mdp'],
 ]);
