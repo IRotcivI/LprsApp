@@ -44,11 +44,20 @@
     </table>
 </form>
 
-<br>
-<p>Mise a jour des données : <button type="button" class="btn btn-danger"></button></p>
-<p>Bon de debit matiere : <button type="button" class="btn btn-secondary"></button></p>
-<p>Bon de commande : <button type="button" class="btn btn-primary"></button></p>
-<p>Etat des stocks : <button type="button" class="btn btn-success"></button></p>
+<?php
+session_start();
+var_dump($_SESSION);
+if (isset($_SESSION['user']))
+{
+       echo "<p> Mise a jour des données : <button type='button' class='btn btn-danger'></button></p>";
+           echo ' <p>Bon de debit matiere : <button type="button" class="btn btn-secondary"></button></p>';
+              echo '<p>Bon de commande : <button type="button" class="btn btn-primary"></button></p>';
+                 echo '<p>Etat des stocks : <button type="button" class="btn btn-success"></button></p>';
+
+}
+
+
+?>
 
 
 </body>
