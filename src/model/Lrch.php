@@ -1,6 +1,5 @@
 <?php
 
-
 class Lrch
 {
     private $nom;
@@ -8,6 +7,7 @@ class Lrch
     private $fonction;
     private $email;
     private $mdp;
+    private $menu;
 
 
     public function __construct( array $cmd)
@@ -43,7 +43,6 @@ class Lrch
     {
         $this->email = $email;
     }
-
 
     /**
      * @return mixed
@@ -109,6 +108,23 @@ class Lrch
         $this->fonction = $fonction;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMenu()
+    {
+        return $this->menu;
+    }
+
+    /**
+     * @param mixed $menu
+     */
+    public function setMenu($menu): void
+    {
+        $this->menu = $menu;
+    }
+    
+
     public function Connexion ()
     {
         $bdd = new \Database\Base();
@@ -120,28 +136,45 @@ class Lrch
         $res = $req -> fetch();
         if (is_array($res))
         {
-            $page = $bdd ->getBdd() -> prepare("SELECT fonctionClasse FROM profil WHERE email = :email AND motDePasse = :mdp");
-            $page -> execute(array(
-                'email'=>$this->getEmail(),
-                'mdp'=>$this->getMdp(),
-            ));
-
-            //Menu pour les professeurs
-            $red = $page -> fetch();
-            if ($red ['fonctionClasse'] == "Eleve")
+            $this -> setNom($res["nom"]);
+            $this -> setPrenom($res["prenom"]);
+            $this -> setFonction($res["fonctionClasse"]);
+            session_start();
+            $_SESSION["user"] = $this;
+            $_SESSION["fonction"] = $this -> getFonction();
+            header("Location: ../../vue/stock.php");
+        }
+    }
+    public function Menu ()
+    {
+        var_dump($this -> getMenu());
+        session_start();
+        if (isset($_SESSION) && isset($_SESSION['fonction']))
+        {
+            if ($this -> getMenu() == 'maj' && $_SESSION['fonction'] == 'professeur')
             {
-                $this -> setNom($res["nom"]);
-                $this -> setPrenom($res["prenom"]);
-                $this -> setFonction($res["fonctionClasse"]);
-                session_start();
-                $_SESSION["user"] = $this;
-                header("Location: ../../vue/professeur.php");
+                header("Location: ../../vue/database.php");
+            }
+            if ($this -> getMenu() == 'bonMatiere' && $_SESSION['fonction'] == 'professeur' )
+            {
+                header("Location: ../../vue/bonDeMatiere");
+            }
+            if ($this -> getMenu() == 'bonCommande' && $_SESSION['fonction'] == 'professeur' || $_SESSION['fonction'] == 'comptable' || $_SESSION['fonction'] == 'admin' )
+            {
+                header("Location: ../../vue/bonDeCommande.php");
+            }
+            if ($this -> getMenu() == 'stock' && $_SESSION['fonction'] == 'professeur' || $_SESSION['fonction'] == 'comptable' || $_SESSION['fonction'] == 'admin' || $_SESSION['fonction'] == 'eleve' )
+            {
+                header("Location: ../../vue/etatStock.php");
+            }
+            else{
+                echo "Vous n'avez pas les droit pour accéder à cette fonction .";
             }
         }
         else
         {
-            header("Location: ../../vue/connexion.html");
+            echo $this ->getMenu();
+            echo "Veuillez vous connecter !!!";
         }
     }
-
 }

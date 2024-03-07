@@ -1,3 +1,7 @@
+<?php
+session_start();
+var_dump($_SESSION);
+?>
 <!doctype html>
 <html lang="en">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -44,21 +48,14 @@
     </table>
 </form>
 
-<?php
-session_start();
-var_dump($_SESSION);
-if (isset($_SESSION['user']))
-{
-       echo "<p> Mise a jour des données : <button type='button' class='btn btn-danger'></button></p>";
-           echo ' <p>Bon de debit matiere : <button type="button" class="btn btn-secondary"></button></p>';
-              echo '<p>Bon de commande : <button type="button" class="btn btn-primary"></button></p>';
-                 echo '<p>Etat des stocks : <button type="button" class="btn btn-success"></button></p>';
+<form method="post" action="../src/trait/traitStock.php">
 
-}
+<p>Mise a jour des données : <button type='submit' value='maj' name='menu' class='btn btn-danger'></button></p>
+<p>Bon de debit matiere : <button type="submit" value="bonMatiere" name="menu" class="btn btn-secondary"></button></p>
+<p>Bon de commande : <button type="submit" value="bonCommande" name="menu" class="btn btn-primary"></button></p>
+<p>Etat des stocks : <button type="submit" value="stock" name="menu" class="btn btn-success"></button></p>
 
-
-?>
-
+</form>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
