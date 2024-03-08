@@ -1,0 +1,27 @@
+h1.titre
+{
+   text-align: center;
+}
+
+div
+{
+   margin-bottom: 1em;
+}
+
+div.logo
+{
+   float: right;
+   margin-top: 15px;
+}
+
+.column {
+   float: left;
+   width: 16.33%;
+   padding: 3px;
+}
+
+.imgSysPiece::after {
+   content: "";
+   clear: both;
+   display: table;
+}
