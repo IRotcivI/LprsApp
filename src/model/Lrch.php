@@ -145,35 +145,36 @@ class Lrch
             header("Location: ../../vue/stock.php");
         }
     }
-    public function Menu ()
+    public function Menu()
     {
-        var_dump($this -> getMenu());
+        var_dump($this->getMenu());
         session_start();
+
         if (isset($_SESSION) && isset($_SESSION['role']))
         {
-            if ($this -> getMenu() == 'maj' && $_SESSION['role'] == 'professeur')
+            if ($this->getMenu() == 'maj' && $_SESSION['role'] == 'professeur')
             {
                 header("Location: ../../vue/database.php");
             }
-            if ($this -> getMenu() == 'bonMatiere' && $_SESSION['role'] == 'professeur' )
+            elseif ($this->getMenu() == 'bonMatiere' && $_SESSION['role'] == 'professeur')
             {
                 header("Location: ../../vue/bonDeMatiere");
             }
-            if ($this -> getMenu() == 'bonCommande' && $_SESSION['role'] == 'professeur' || $_SESSION['role'] == 'comptable' || $_SESSION['role'] == 'admin' )
+            elseif ($this->getMenu() == 'bonCommande' && ($_SESSION['role'] == 'professeur' || $_SESSION['role'] == 'comptable' || $_SESSION['role'] == 'admin'))
             {
                 header("Location: ../../vue/bonDeCommande.php");
             }
-            if ($this -> getMenu() == 'stock' && $_SESSION['role'] == 'professeur' || $_SESSION['role'] == 'comptable' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'eleve' )
+            elseif ($this->getMenu() == 'stock' && ($_SESSION['role'] == 'professeur' || $_SESSION['role'] == 'comptable' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'eleve'))
             {
                 header("Location: ../../vue/etatStock.php");
             }
-            else{
-                echo "Vous n'avez pas les droit pour accéder à cette fonction .";
+            else
+            {
+                echo "Vous n'avez pas les droits pour accéder à cette page.";
             }
         }
         else
         {
-            echo $this ->getMenu();
             echo "Veuillez vous connecter !!!";
         }
     }
