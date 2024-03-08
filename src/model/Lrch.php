@@ -141,7 +141,7 @@ class Lrch
             $this -> setFonction($res["fonctionClasse"]);
             session_start();
             $_SESSION["user"] = $this;
-            $_SESSION["fonction"] = $this -> getFonction();
+            $_SESSION["role"] = $this -> getFonction();
             header("Location: ../../vue/stock.php");
         }
     }
@@ -149,21 +149,21 @@ class Lrch
     {
         var_dump($this -> getMenu());
         session_start();
-        if (isset($_SESSION) && isset($_SESSION['fonction']))
+        if (isset($_SESSION) && isset($_SESSION['role']))
         {
-            if ($this -> getMenu() == 'maj' && $_SESSION['fonction'] == 'professeur')
+            if ($this -> getMenu() == 'maj' && $_SESSION['role'] == 'professeur')
             {
                 header("Location: ../../vue/database.php");
             }
-            if ($this -> getMenu() == 'bonMatiere' && $_SESSION['fonction'] == 'professeur' )
+            if ($this -> getMenu() == 'bonMatiere' && $_SESSION['role'] == 'professeur' )
             {
                 header("Location: ../../vue/bonDeMatiere");
             }
-            if ($this -> getMenu() == 'bonCommande' && $_SESSION['fonction'] == 'professeur' || $_SESSION['fonction'] == 'comptable' || $_SESSION['fonction'] == 'admin' )
+            if ($this -> getMenu() == 'bonCommande' && $_SESSION['role'] == 'professeur' || $_SESSION['role'] == 'comptable' || $_SESSION['role'] == 'admin' )
             {
                 header("Location: ../../vue/bonDeCommande.php");
             }
-            if ($this -> getMenu() == 'stock' && $_SESSION['fonction'] == 'professeur' || $_SESSION['fonction'] == 'comptable' || $_SESSION['fonction'] == 'admin' || $_SESSION['fonction'] == 'eleve' )
+            if ($this -> getMenu() == 'stock' && $_SESSION['role'] == 'professeur' || $_SESSION['role'] == 'comptable' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'eleve' )
             {
                 header("Location: ../../vue/etatStock.php");
             }
