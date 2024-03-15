@@ -57,14 +57,39 @@
     </div>
     
     <div class="imgSysPiece" >
-        <div class="column" style="text-align: center">
-            <img src="../assets/images/Support GoPro.png" width="200px" >
-        </div>
-        <div class="column" style="text-align: center">
-            <img src="../assets/images/Go%20Pro%20-%20Corps.jpg" width="200px">
-        </div>
+        <ul>
+            <li>
+                <img src="../assets/images/Support GoPro.png" width="200px" >
+            </li>
+            <li>
+                <img src="../assets/images/Support GoPro.png" width="200px" >
+            </li>
+        </ul>
     </div>
 
+    <div class="grid">
+        <div class="grid-container">
+            <form action="">
+                <select name="forme" id="test">
+                    <option value="1">1</option>
+                </select>
+
+                <select name="forme" id="test">
+                    <option value="2">2</option>
+                </select>
+
+                <input type="number" name="quantite" placeholder="Quantité">
+
+                <input type="number" placeholder="Longueur" >
+
+                <input type="number" placeholder="Longueur" class="lgts">
+
+                <input type="number" placeholder="Longueur" class="stoi" >
+
+                <input type="number" placeholder="Longueur" class="stof">
+            </form>
+        </div>
+    </div>
 </div>
 
 </body>

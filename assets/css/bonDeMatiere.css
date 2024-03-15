@@ -13,15 +13,49 @@ div.logo
    float: right;
    margin-top: 15px;
 }
-
-.column {
-   float: left;
-   width: 16.33%;
-   padding: 3px;
+.imgSysPiece ul
+{
+   padding: 0px;
+   display: flex;
+   flex-direction: row-reverse;
+   justify-content: center;
 }
 
-.imgSysPiece::after {
-   content: "";
-   clear: both;
-   display: table;
+.imgSysPiece li
+{
+   list-style: none;
+}
+
+.grid-container
+{
+   display: grid;
+   margin: 5px;
+}
+
+form
+{
+   display: grid;
+   grid-template-columns: 1fr 1fr 2fr 3fr;
+   grid-template-rows: 1fr 1fr 1fr;
+   grid-template-areas:
+  "forme dim quantite1 longueur1"
+  "vi    vi  quantite2   stock1"
+  "vi    vi  longueur2  stock2";
+   grid-column-gap: 10px;
+   grid-row-gap: 10px;
+}
+
+.lgts
+{
+   grid-area: quantite2;
+}
+
+.stoi
+{
+   grid-area: stock1;
+}
+
+.stof
+{
+   grid-area: stock2;
 }
