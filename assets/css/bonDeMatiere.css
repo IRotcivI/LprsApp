@@ -36,8 +36,9 @@ form
 {
    display: grid;
    grid-template-columns: 1fr 1fr 2fr 3fr;
-   grid-template-rows: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
    grid-template-areas:
+  "t1    t2     t3        t4"
   "forme dim quantite1 longueur1"
   "vi    vi  quantite2   stock1"
   "vi    vi  longueur2  stock2";
@@ -50,6 +51,11 @@ form
    grid-area: quantite2;
 }
 
+.lgtt
+{
+   background-color: green;
+}
+
 .stoi
 {
    grid-area: stock1;
@@ -58,4 +64,26 @@ form
 .stof
 {
    grid-area: stock2;
+   background-color: red;
 }
+
+.t1
+{
+   grid-area: t1;
+}
+
+.t2
+{
+   grid-area: t2;
+}
+
+.t3
+{
+   grid-area: t3;
+}
+
+.t4
+{
+   grid-area: t4;
+}
+

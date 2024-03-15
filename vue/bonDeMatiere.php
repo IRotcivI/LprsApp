@@ -1,3 +1,7 @@
+<?php
+session_start();
+var_dump($_SESSION);
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -7,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../assets/css/bonDeMatiere.css">
     <title>LPRS</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 </head>
 <body>
 
@@ -22,9 +27,22 @@
 
     <div class="professeur">
         Nom :
-        <select name="professeur" id="prof">
-            <option value="">Professeur en charge</option>
-        </select>
+        <?php
+        // VARIABLES
+        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+
+        // CODE
+        $option = $bdd->prepare("SELECT nom FROM profil WHERE fonctionClasse = 'professeur'");
+        $option->execute();
+        $res = $option->fetchAll();
+
+        echo '<select name="professeur">';
+        foreach ($res as $element) {
+            echo '<option value="' . $element['nom'] . '">' . $element['nom'] . '</option>';
+        }
+        echo '</select>';
+        ?>
+
     </div>
 
     <div class="filiere">
@@ -37,29 +55,69 @@
 
     <div class="classe">
         Classe :
-        <select name="classe" id="classe">
-            <option value="">Classe en charge</option>
-        </select>
+        <?php
+        // VARIABLES
+        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+
+        // CODE
+        $option = $bdd->prepare("SELECT nom FROM classe");
+        $option->execute();
+        $res = $option->fetchAll();
+
+        echo '<select name="classe">';
+        foreach ($res as $element) {
+            echo '<option value="' . $element['nom'] . '">' . $element['nom'] . '</option>';
+        }
+        echo '</select>';
+        ?>
     </div>
 
     <div class="systeme">
         Système :
-        <select name="systeme" id="systeme">
-            <option value="">Système</option>
-        </select>
+        <?php
+        // VARIABLES
+        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+
+        // CODE
+        $option = $bdd->prepare("SELECT nom FROM systeme");
+        $option->execute();
+        $res = $option->fetchAll();
+
+        echo '<select name="sys">';
+        foreach ($res as $element) {
+            echo '<option value="' . $element['nom'] . '">' . $element['nom'] . '</option>';
+        }
+        echo '</select>';
+        ?>
     </div>
 
     <div class="piece">
         Piéce :
-        <select name="piece" id="pice">
-            <option value="">Piéce</option>
-        </select>
+        <?php
+        // VARIABLES
+        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+        $img = "";
+        // CODE
+        $option = $bdd->prepare("SELECT nom,img FROM piece");
+        $option->execute();
+        $res = $option->fetchAll();
+        ?>
+        <label>
+            <select class="jklm" name="piece">
+            <?php
+            foreach ($res as $element) {
+                echo '<option value="' . $element['img'] . '">' . $element['nom'] . '</option>';
+                $img = $element['nom'];
+            }
+            ?>
+            </select>
+        </label>
     </div>
     
     <div class="imgSysPiece" >
         <ul>
             <li>
-                <img src="../assets/images/Support GoPro.png" width="200px" >
+
             </li>
             <li>
                 <img src="../assets/images/Support GoPro.png" width="200px" >
@@ -74,23 +132,28 @@
                     <option value="1">1</option>
                 </select>
 
-                <select name="forme" id="test">
+                <select class="aaa" name="forme" id="test">
+                    <option value="1">1</option>
                     <option value="2">2</option>
+                    <option value="3">3</option>
                 </select>
 
-                <input type="number" name="quantite" placeholder="Quantité">
+                <label class="t1">Forme : </label>
+                <input type="number" name="quantite" placeholder="" size="10">
+                <label class="t2">Dimension : </label>
+                <input type="number" placeholder="" size="10" class="lgtt">
+                <label class="t3">Quantité : </label>
+                <input type="number" placeholder="Longueur" class="lgts" size="10">
+                <label class="t4">Longueur total</label>
+                <input type="number" placeholder="Stock initial" class="stoi" size="10">
 
-                <input type="number" placeholder="Longueur" >
-
-                <input type="number" placeholder="Longueur" class="lgts">
-
-                <input type="number" placeholder="Longueur" class="stoi" >
-
-                <input type="number" placeholder="Longueur" class="stof">
+                <input type="number" placeholder="Stock final" class="stof" size="10">
             </form>
         </div>
     </div>
 </div>
+
+<script src="../assets/js/bonDeMatiere.js"></script>
 
 </body>
 </html>

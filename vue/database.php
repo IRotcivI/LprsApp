@@ -20,7 +20,7 @@
         <td>ROND</td>
     </tr>
     <tr>
-        <td><img src="../assets/image/rond .png" width="150px" ></td>
+        <td><img src="../assets/images/rond%20.png" width="150px" ></td>
 
         <td><label for ="matiere-select">Quel matiere souhaitez vous ?</label><br>
             <select name = "matiere" id="matiere-select">
@@ -44,7 +44,7 @@
         <td><br><br>MEPLAT</td>
     </tr>
     <tr>
-        <td><img src="../assets/image/Méplat.png" width="150px" ></td>
+        <td><img src="../assets/images/Méplat.png" width="150px" ></td>
 
         <td><label for ="matiere-select">Quel matiere souhaitez vous ?</label><br>
             <select name = "matiere" id="matiere-select">
