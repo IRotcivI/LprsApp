@@ -22,14 +22,14 @@ var_dump($_SESSION);
 <div class="menu">
 
     <div class="logo">
-        <img src="../assets/images/logo_lprs.png" width="150px" >
+        <img src="../assets/images/logo_lprs.png" width="130px" >
     </div>
 
     <div class="professeur">
         Nom :
         <?php
         // VARIABLES
-        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost:3306;dbname=lprs_app;charset=utf8', 'root', '');
 
         // CODE
         $option = $bdd->prepare("SELECT nom FROM profil WHERE fonctionClasse = 'professeur'");
@@ -57,7 +57,7 @@ var_dump($_SESSION);
         Classe :
         <?php
         // VARIABLES
-        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost:3306;dbname=lprs_app;charset=utf8', 'root', '');
 
         // CODE
         $option = $bdd->prepare("SELECT nom FROM classe");
@@ -76,7 +76,7 @@ var_dump($_SESSION);
         Système :
         <?php
         // VARIABLES
-        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost:3306;dbname=lprs_app;charset=utf8', 'root', '');
 
         // CODE
         $option = $bdd->prepare("SELECT nom FROM systeme");
@@ -95,8 +95,7 @@ var_dump($_SESSION);
         Piéce :
         <?php
         // VARIABLES
-        $bdd = new PDO('mysql:host=localhost:3307;dbname=lprs_stock;charset=utf8', 'root', '');
-        $img = "";
+        $bdd = new PDO('mysql:host=localhost:3306;dbname=lprs_app;charset=utf8', 'root', '');
         // CODE
         $option = $bdd->prepare("SELECT nom,img FROM piece");
         $option->execute();
@@ -114,13 +113,13 @@ var_dump($_SESSION);
         </label>
     </div>
     
-    <div class="imgSysPiece" >
+    <div class="imgSysPiece">
         <ul>
             <li>
-
+                <div id="piece"></div>
             </li>
             <li>
-                <img src="../assets/images/Support GoPro.png" width="200px" >
+                <img src="../assets/images/Support GoPro.png">
             </li>
         </ul>
     </div>

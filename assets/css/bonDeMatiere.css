@@ -26,6 +26,11 @@ div.logo
    list-style: none;
 }
 
+.imgSysPiece img
+{
+   width: 200px;
+}
+
 .grid-container
 {
    display: grid;
